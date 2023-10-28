@@ -44,17 +44,6 @@
     <script src="{{ url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js') }}"></script>
 
 @section('content')
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-lg-3 col-md-5">
-                <form class="d-flex" role="search" id="searchForm">
-                    @csrf
-                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Cari Username" name="username">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="container mt-3" id="map-container">
         <div id="map"></div>
     </div>
