@@ -55,9 +55,6 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="container mt-3" id="map-container">
         <div id="map"></div>
     </div>
