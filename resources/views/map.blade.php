@@ -62,9 +62,9 @@
         var map = L.map('map').setView([-7.9933885, 112.6079343], 15);
 
         // // Menambahkan tile layer
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 20,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
         }).addTo(map);
 
         // Mengaktifkan fitur geolocation
