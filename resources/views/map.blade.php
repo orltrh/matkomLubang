@@ -13,7 +13,9 @@
 
     {{-- Template CSS Leaflet Maps --}}
     <style>
-        #map { height: 600px; }
+        #map {
+            height: 600px;
+        }
 
         #map-container {
             height: 610px;
@@ -44,9 +46,15 @@
     <script src="{{ url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js') }}"></script>
 
 @section('content')
-    <div class="container mt-3" id="map-container">
+    <div class="container" style="padding-top: 10px;">
+        <h1 style="text-align: center;">Map</h1>
+    </div>
+    <div class="container mt-3" id="map-container" style="padding-bottom:100px;">
         <div id="map"></div>
     </div>
+    <div class="container" style="padding-bottom: 30px;"></div>
+
+    <script src="assets/geojson/map.js"></script>
 
 
     <script>
@@ -63,8 +71,7 @@
         map.locate({setView: true, maxZoom:18});
 
         // Menampilkan marker untuk menunjukkan lokasi user saat ini
-        var marker = L.marker([-7.9933885, 112.6079343]).addTo(map);
-        marker.bindPopup("<b>Lubang Berada Disini").openPopup();
+        var marker = L.marker([0,0]).addTo(map);
 
         // Fungsi untuk menambahkan titik pada polyline
         function addLatLng(latlng) {
@@ -81,6 +88,18 @@
         }
 
         map.on('click', onMapClick);
+
+        // Menambahkan geojson
+        L.geoJSON(coordinates).addTo(map);
+        L.geoJSON(coordinates, {
+            onEachFeature: function (feature, layer) {
+                if (feature.properties) {
+                    layer.bindPopup("<b>Lubang Berada Disini").openPopup();
+                }
+            }
+        }).addTo(map);
+
+
     </script>
 
 </section>

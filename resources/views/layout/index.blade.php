@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'SafeSpeaks')</title>
     <!-- Favicons -->
-    <link href="{{ url('assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url('assets/img/favicon.jpg') }}" rel="icon">
     <link href="{{ url('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -34,7 +34,7 @@
   {{-- Content --}}
   @section('content')
   <div class="main">
-    <div class="container-fluid text-center" >
+    <div class="container-fluid text-center">
         @show
     </div>
   </div>
