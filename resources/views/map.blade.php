@@ -55,7 +55,7 @@
     <div class="container" style="padding-bottom: 30px;"></div>
 
     <script src="assets/geojson/map.js"></script>
-
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
     <script>
         // Menampilkan maps
@@ -99,9 +99,16 @@
             }
         }).addTo(map);
 
+    // Menggunakan Leaflet Routing Machine
+    var router = L.Routing.control({
+        waypoints: [
+            L.latLng(0, 0), // Ganti dengan titik awal yang sesuai
+            L.latLng(0, 0)  // Ganti dengan titik akhir yang sesuai
+        ],
+        routeWhileDragging: true
+    }).addTo(map);
 
     </script>
 
 </section>
 @endsection
-
