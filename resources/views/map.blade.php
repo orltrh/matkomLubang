@@ -8,8 +8,7 @@
 
     {{-- Template Leaflet Maps --}}
     <link rel="stylesheet" href="{{ url('https://unpkg.com/leaflet@1.9.3/dist/leaflet.css') }}"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 
     {{-- Template CSS Leaflet Maps --}}
     <style>
@@ -22,7 +21,8 @@
             width: 100%;
             position: static;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(13, 80, 174, 0.2); /* Menambahkan bayangan */
+            box-shadow: 0 8px 20px rgba(13, 80, 174, 0.2);
+            /* Menambahkan bayangan */
             background-clip: border-box;
             border-radius: 10px;
         }
@@ -33,8 +33,7 @@
 
     {{-- Template Leaflet CSS JS --}}
     <script src="{{ url('https://unpkg.com/leaflet@1.9.3/dist/leaflet.js') }}"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
     {{-- Template Routing Machine Leaflet CSS JS --}}
     <script src="{{ url('assets/js/leaflet-routing-machine/dist/leaflet-routing-machine.js') }}"></script>
@@ -62,16 +61,19 @@
         var map = L.map('map').setView([-7.9933885, 112.6079343], 15);
 
         // // Menambahkan tile layer
-        googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
+        googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         }).addTo(map);
 
         // Mengaktifkan fitur geolocation
-        map.locate({setView: true, maxZoom:18});
+        map.locate({
+            setView: true,
+            maxZoom: 18
+        });
 
         // Menampilkan marker untuk menunjukkan lokasi user saat ini
-        var marker = L.marker([0,0]).addTo(map);
+        var marker = L.marker([0, 0]).addTo(map);
 
         // Fungsi untuk menambahkan titik pada polyline
         function addLatLng(latlng) {
@@ -92,23 +94,22 @@
         // Menambahkan geojson
         L.geoJSON(coordinates).addTo(map);
         L.geoJSON(coordinates, {
-            onEachFeature: function (feature, layer) {
-                if (feature.properties) {
-                    layer.bindPopup("<b>Lubang Berada Disini").openPopup();
+            onEachFeature: function(feature, layer) {
+                if (feature.properties && feature.properties.Nama) {
+                    layer.bindPopup("<b>" + feature.properties.Nama + "</b>").openPopup();
                 }
             }
         }).addTo(map);
 
-    // Menggunakan Leaflet Routing Machine
-    var router = L.Routing.control({
-        waypoints: [
-            L.latLng(0, 0), // Ganti dengan titik awal yang sesuai
-            L.latLng(0, 0)  // Ganti dengan titik akhir yang sesuai
-        ],
-        routeWhileDragging: true
-    }).addTo(map);
-
+        // Menggunakan Leaflet Routing Machine
+        var router = L.Routing.control({
+            waypoints: [
+                L.latLng(0, 0), // Ganti dengan titik awal yang sesuai
+                L.latLng(0, 0) // Ganti dengan titik akhir yang sesuai
+            ],
+            routeWhileDragging: true
+        }).addTo(map);
     </script>
 
-</section>
+    </section>
 @endsection
