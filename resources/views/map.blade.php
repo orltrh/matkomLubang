@@ -80,16 +80,8 @@
             polyline.addLatLng(latlng);
         }
 
-        var popup = L.popup();
-
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("Anda menekan map di titik " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        map.on('click', onMapClick);
+        // Menampilkan popup saat marker diklik
+        map.on('click', L.popup());
 
         // Menambahkan geojson
         L.geoJSON(coordinates).addTo(map);
@@ -99,15 +91,6 @@
                     layer.bindPopup("<b>" + feature.properties.Nama + "</b>").openPopup();
                 }
             }
-        }).addTo(map);
-
-        // Menggunakan Leaflet Routing Machine
-        var router = L.Routing.control({
-            waypoints: [
-                L.latLng(0, 0), // Ganti dengan titik awal yang sesuai
-                L.latLng(0, 0) // Ganti dengan titik akhir yang sesuai
-            ],
-            routeWhileDragging: true
         }).addTo(map);
     </script>
 
